@@ -1,63 +1,65 @@
-# Mockito (Java) - Guía para seguir el tutorial de Vogella
+# Mockito (Java) - Full tutorial checklist for screenshots
 
-Este repositorio implementa (en código) los ejercicios principales del tutorial:
-[Unit tests with Mockito - Tutorial (Vogella)](https://www.vogella.com/tutorials/Mockito/article.html).
+This project follows the tutorial:
+[Unit tests with Mockito - Tutorial (Vogella)](https://www.vogella.com/tutorials/Mockito/article.html)
 
-## Requisitos
+## Requirements
 
 - Java 17+
 - Maven 3.9+
 
-## Cómo ejecutar los tests
-
-Desde la raíz del proyecto:
+## Run all tests
 
 ```bash
 mvn test
 ```
 
-## Estructura del proyecto
+## Where to put screenshots
 
-- `src/main/java`: código “productivo” (clases del tutorial / ejercicios)
-- `src/test/java`: pruebas con JUnit 5 + Mockito
-- `docs/capturas`: capturas de pantalla para evidenciar que seguiste el tutorial
-
-## Dónde poner las capturas (lo que pide el profe)
-
-Guarda **todas** las capturas en:
+Save every screenshot in:
 
 `docs/capturas/`
 
-Convención sugerida: `NN-seccion-descripcion.png` (ordenadas y fáciles de revisar).
+Suggested naming:
 
-### Lista mínima de capturas recomendadas
+`NN-test-class-name.png`
 
-1) **Proyecto compila y tests pasan**
-- Archivo: `docs/capturas/01-mvn-test-ok.png`
-- Qué capturar: consola con `mvn test` en verde / BUILD SUCCESS.
+## Screenshot checklist (one per test class)
 
-2) **Ejercicio 13.2 (VolumeUtilTests)**
-- Archivo: `docs/capturas/02-ej-13-2-volumeutiltests.png`
-- Qué capturar: ejecución de tests donde se ve `VolumeUtilTests` pasando.
+Use this command pattern for each class:
 
-3) **Ejercicio 13.3 (ConfigureThreadingUtilTests)**
-- Archivo: `docs/capturas/03-ej-13-3-configurethreadingutiltests.png`
-- Qué capturar: ejecución de tests donde se ve `ConfigureThreadingUtilTests` pasando.
+```bash
+mvn -Dtest=ClassName test
+```
 
-4) **Ejercicio 14 (TestingSpy)**
-- Archivo: `docs/capturas/04-ej-14-testingspy.png`
-- Qué capturar: ejecución de tests donde se ve `TestingSpy` pasando.
+1. `docs/capturas/01-mvn-test-ok.png` - full suite (`mvn test`)
+2. `docs/capturas/02-state-vs-behavior-test.png` - `StateVsBehaviorTest`
+3. `docs/capturas/03-user-service-test.png` - `UserServiceTest`
+4. `docs/capturas/04-payment-service-test.png` - `PaymentServiceTest`
+5. `docs/capturas/05-user-service-common-use-cases-test.png` - `UserServiceCommonUseCasesTest`
+6. `docs/capturas/06-user-service-configuration-test.png` - `UserServiceConfigurationTest`
+7. `docs/capturas/07-user-service-advanced-mocking-test.png` - `UserServiceAdvancedMockingTest`
+8. `docs/capturas/08-user-service-exception-test.png` - `UserServiceExceptionTest`
+9. `docs/capturas/09-user-service-spy-test.png` - `UserServiceSpyTest`
+10. `docs/capturas/10-user-service-exception-handling-test.png` - `UserServiceExceptionHandlingTest`
+11. `docs/capturas/11-mockito-spy-test.png` - `MockitoSpyTest`
+12. `docs/capturas/12-user-service-verification-test.png` - `UserServiceVerificationTest`
+13. `docs/capturas/13-article-manager-inject-mocks-test.png` - `ArticleManagerInjectMocksTest`
+14. `docs/capturas/14-mockito-argument-capture-test.png` - `MockitoArgumentCaptureTest`
+15. `docs/capturas/15-mockito-answers-test.png` - `MockitoAnswersTest`
+16. `docs/capturas/16-mockito-mock-final-test.png` - `MockitoMockFinalTest`
+17. `docs/capturas/17-my-utils-test.png` - `MyUtilsTest`
+18. `docs/capturas/18-strict-stubs-test.png` - `StrictStubsTest`
+19. `docs/capturas/19-volume-util-tests.png` - `VolumeUtilTests`
+20. `docs/capturas/20-configure-threading-util-tests.png` - `ConfigureThreadingUtilTests`
+21. `docs/capturas/21-testing-spy.png` - `TestingSpy`
+22. `docs/capturas/22-article-manager-test.png` - `ArticleManagerTest`
+23. `docs/capturas/23-my-static-demo-test.png` - `MyStaticDemoTest`
+24. `docs/capturas/24-static-mock-test.png` - `StaticMockTest`
+25. `docs/capturas/25-private-field-method-test.png` - `MyClassWithPrivateFieldAndMethodTest`
 
-5) **Ejercicio 15 (ArticleManagerTest con @InjectMocks)**
-- Archivo: `docs/capturas/05-ej-15-injectmocks.png`
-- Qué capturar: ejecución de tests donde se ve `ArticleManagerTest` pasando.
+## Notes for the report
 
-6) **Ejercicio 16 (static mocking)**
-- Archivo: `docs/capturas/06-ej-16-mockstatic.png`
-- Qué capturar: ejecución de tests donde se ve `MyStaticDemoTest` y/o `StaticMockTest` pasando.
-
-7) **Ejercicio 17 (Spy + reflection)**
-- Archivo: `docs/capturas/07-ej-17-reflection.png`
-- Qué capturar: ejecución de tests donde se ve `MyClassWithPrivateFieldAndMethodTest` pasando.
-
-> Si tu profe pide más evidencias, crea más capturas en esa misma carpeta manteniendo la convención.
+- In each screenshot, show the command and the result with tests passing.
+- Keep all screenshots in order (`01`, `02`, ..., `25`).
+- If your teacher asks for package/class code evidence, add one extra screenshot per package from `src/test/java`.

@@ -51,7 +51,7 @@ class UserServiceExceptionHandlingTest {
     @Test
     void testEmailServiceThrowsOnVoidMethod() {
         doThrow(new RuntimeException("Email service temporarily unavailable"))
-                .when(emailService).sendBulkEmail(any(List.class), anyString());
+                .when(emailService).sendBulkEmail(org.mockito.ArgumentMatchers.<List<String>>any(), anyString());
 
         RuntimeException exception = assertThrows(RuntimeException.class, () ->
                 emailService.sendBulkEmail(List.of("test@example.com"), "Hello")
@@ -60,4 +60,3 @@ class UserServiceExceptionHandlingTest {
         assertEquals("Email service temporarily unavailable", exception.getMessage());
     }
 }
-

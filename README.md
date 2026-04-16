@@ -1,226 +1,235 @@
-# Mockito en Java - Guia para presentar el tutorial completo
+# Mockito en Java - Guia de evidencias
 
-Tutorial base:
-[https://www.vogella.com/tutorials/Mockito/article.html](https://www.vogella.com/tutorials/Mockito/article.html)
+Tutorial base: [https://www.vogella.com/tutorials/Mockito/article.html](https://www.vogella.com/tutorials/Mockito/article.html)
 
 ## Requisitos
 
-- Java 17 o superior
-- Maven 3.9 o superior
+- Java 17+
+- Maven 3.9+
 
-## Temas del tutorial (de inicio a fin)
+## Formato de presentacion (Tema, Descripcion, Comando, Imagen)
 
-1. **Prerequisites**  
-   Preparacion del entorno Java y pruebas con JUnit 5.
+### 1
+**Tema:** Prerequisites  
+**Descripcion:** Verificar que el proyecto y el entorno de pruebas estan listos.  
+**Comando:**
+```bash
+mvn test
+```
+**Imagen:** `docs/capturas/01-mvn-test-ok.png`
 
-2. **Using Mockito for mocking objects in unit tests**  
-   Que es un mock, por que usar Mockito, capacidades, limites y enfoque de pruebas.
+### 2
+**Tema:** State testing vs behavior testing  
+**Descripcion:** Validar resultado final y tambien la interaccion con dependencias mockeadas.  
+**Comando:**
+```bash
+mvn -Dtest=StateVsBehaviorTest test
+```
+**Imagen:** `docs/capturas/02-state-vs-behavior-test.png`
 
-3. **Adding Mockito to a project**  
-   Configuracion de dependencias en Maven/Gradle para usar Mockito.
+### 3
+**Tema:** Creating mock objects with Mockito API  
+**Descripcion:** Probar registro de usuario usando `@Mock` y `MockitoExtension`.  
+**Comando:**
+```bash
+mvn -Dtest=UserServiceTest test
+```
+**Imagen:** `docs/capturas/03-user-service-test.png`
 
-4. **Creating mock objects with the Mockito API**  
-   Creacion de mocks con `@Mock`, `mock()` y `MockitoExtension`.
+### 4
+**Tema:** Testing services with external dependencies  
+**Descripcion:** Probar pagos con `PaymentGateway` y auditoria mockeada.  
+**Comando:**
+```bash
+mvn -Dtest=PaymentServiceTest test
+```
+**Imagen:** `docs/capturas/04-payment-service-test.png`
 
-5. **Common use cases for Mockito**  
-   Casos comunes: dependencias externas, argumentos, errores, asincronia, spies e interacciones multiples.
+### 5
+**Tema:** Common use cases for Mockito  
+**Descripcion:** Verificacion de argumentos, excepciones, asincronia, spy y llamadas multiples.  
+**Comando:**
+```bash
+mvn -Dtest=UserServiceCommonUseCasesTest test
+```
+**Imagen:** `docs/capturas/05-user-service-common-use-cases-test.png`
 
-6. **Configuring return values on mocks**  
-   Uso de `when().thenReturn()`, `thenThrow()`, `doReturn()`, `doThrow()`.
+### 6
+**Tema:** when().thenReturn() basico  
+**Descripcion:** Configurar retornos fijos para mocks y validar recuperacion de datos.  
+**Comando:**
+```bash
+mvn -Dtest=UserServiceConfigurationTest test
+```
+**Imagen:** `docs/capturas/06-user-service-configuration-test.png`
 
-7. **Wrapping Java objects with Spy**  
-   Uso de `@Spy` y verificacion de llamadas en objetos espia.
+### 7
+**Tema:** Return values avanzados y matchers  
+**Descripcion:** Probar multiples retornos y comportamiento segun parametros.  
+**Comando:**
+```bash
+mvn -Dtest=UserServiceAdvancedMockingTest test
+```
+**Imagen:** `docs/capturas/07-user-service-advanced-mocking-test.png`
 
-8. **Using @InjectMocks**  
-   Inyeccion automatica de dependencias mockeadas.
+### 8
+**Tema:** when().thenThrow()  
+**Descripcion:** Simular fallos de servicios/repositorio y validar manejo de errores.  
+**Comando:**
+```bash
+mvn -Dtest=UserServiceExceptionTest test
+```
+**Imagen:** `docs/capturas/08-user-service-exception-test.png`
 
-9. **Capturing arguments**  
-   Captura de argumentos con `ArgumentCaptor`.
+### 9
+**Tema:** doReturn().when() con spies  
+**Descripcion:** Usar spy de forma segura para evitar invocar comportamiento real no deseado.  
+**Comando:**
+```bash
+mvn -Dtest=UserServiceSpyTest test
+```
+**Imagen:** `docs/capturas/09-user-service-spy-test.png`
 
-10. **Using Answers for complex mocks**  
-    Respuestas dinamicas segun argumentos y callbacks.
+### 10
+**Tema:** doThrow().when()  
+**Descripcion:** Forzar excepciones en metodos void y validar reacciones esperadas.  
+**Comando:**
+```bash
+mvn -Dtest=UserServiceExceptionHandlingTest test
+```
+**Imagen:** `docs/capturas/10-user-service-exception-handling-test.png`
 
-11. **More on Mockito**  
-    Mock de clases `final`, metodos estaticos y enfoque de strict stubs.
+### 11
+**Tema:** Wrapping objects with Spy  
+**Descripcion:** Demostrar uso de `@Spy` en estructuras de datos reales.  
+**Comando:**
+```bash
+mvn -Dtest=MockitoSpyTest test
+```
+**Imagen:** `docs/capturas/11-mockito-spy-test.png`
 
-12. **Exercise: project with Mockito support**  
-    Estructura del proyecto y configuracion base para correr tests.
+### 12
+**Tema:** Verify calls on mock objects  
+**Descripcion:** Validar numero de llamadas, argumentos y ausencia de interacciones extra.  
+**Comando:**
+```bash
+mvn -Dtest=UserServiceVerificationTest test
+```
+**Imagen:** `docs/capturas/12-user-service-verification-test.png`
 
-13. **Exercise: API testing (AudioManager)**  
-    Pruebas de `VolumeUtil` y `ConfigureThreadingUtil`.
+### 13
+**Tema:** Using @InjectMocks  
+**Descripcion:** Inyeccion automatica de mocks por constructor para crear objeto bajo prueba.  
+**Comando:**
+```bash
+mvn -Dtest=ArticleManagerInjectMocksTest test
+```
+**Imagen:** `docs/capturas/13-article-manager-inject-mocks-test.png`
 
-14. **Exercise: use @Spy**  
-    Prueba de spy en colecciones.
+### 14
+**Tema:** Capturing arguments  
+**Descripcion:** Capturar lista pasada al mock y validar contenido con `ArgumentCaptor`.  
+**Comando:**
+```bash
+mvn -Dtest=MockitoArgumentCaptureTest test
+```
+**Imagen:** `docs/capturas/14-mockito-argument-capture-test.png`
 
-15. **Exercise: use @InjectMock(s)**  
-    Modelo simple e inyeccion de mocks en `ArticleManager`.
+### 15
+**Tema:** Using Answers for complex mocks  
+**Descripcion:** Respuestas dinamicas con callbacks y comportamiento segun argumentos.  
+**Comando:**
+```bash
+mvn -Dtest=MockitoAnswersTest test
+```
+**Imagen:** `docs/capturas/15-mockito-answers-test.png`
 
-16. **Exercise: mocking final/static**  
-    Pruebas de metodos estaticos y casos mas grandes de mock static.
+### 16
+**Tema:** Mocking final classes and static methods (parte 1)  
+**Descripcion:** Probar mock de clase final y creacion de mock estatico.  
+**Comando:**
+```bash
+mvn -Dtest=MockitoMockFinalTest test
+```
+**Imagen:** `docs/capturas/16-mockito-mock-final-test.png`
 
-17. **Exercise: spy + reflection + private members**  
-    Cambio de campo privado e invocacion de metodo privado por reflection.
+### 17
+**Tema:** Mocking static methods (parte 2)  
+**Descripcion:** Mockear metodos estaticos concretos con diferentes entradas.  
+**Comando:**
+```bash
+mvn -Dtest=MyUtilsTest test
+```
+**Imagen:** `docs/capturas/17-my-utils-test.png`
 
-18. **Conclusion**  
-    Buenas practicas para mantener pruebas claras y confiables.
+### 18
+**Tema:** Strict stubs rule  
+**Descripcion:** Mostrar comportamiento de strict stubs para mantener tests limpios.  
+**Comando:**
+```bash
+mvn -Dtest=StrictStubsTest test
+```
+**Imagen:** `docs/capturas/18-strict-stubs-test.png`
 
-19. **Resources**  
-    Referencias oficiales y enlaces de apoyo.
+### 19
+**Tema:** Exercise 13.2 - Testing VolumeUtil  
+**Descripcion:** Validar comportamiento segun modo de timbre en `AudioManager`.  
+**Comando:**
+```bash
+mvn -Dtest=VolumeUtilTests test
+```
+**Imagen:** `docs/capturas/19-volume-util-tests.png`
 
-## Carpeta de capturas
+### 20
+**Tema:** Exercise 13.3 - ConfigureThreadingUtil  
+**Descripcion:** Verificar lectura de configuracion de hilos en `MyApplication`.  
+**Comando:**
+```bash
+mvn -Dtest=ConfigureThreadingUtilTests test
+```
+**Imagen:** `docs/capturas/20-configure-threading-util-tests.png`
 
-Guardar todas las capturas en:
+### 21
+**Tema:** Exercise 14 - Use @Spy  
+**Descripcion:** Stub de indice alto en lista espia usando `doReturn`.  
+**Comando:**
+```bash
+mvn -Dtest=TestingSpy test
+```
+**Imagen:** `docs/capturas/21-testing-spy.png`
 
-`docs/capturas/`
+### 22
+**Tema:** Exercise 15 - Use @InjectMocks  
+**Descripcion:** Probar inicializacion de `ArticleManager` e interacciones esperadas.  
+**Comando:**
+```bash
+mvn -Dtest=ArticleManagerTest test
+```
+**Imagen:** `docs/capturas/22-article-manager-test.png`
 
-## Capturas y comando (debajo de cada una)
+### 23
+**Tema:** Exercise 16 - Static mock demo  
+**Descripcion:** Validar mock de metodos estaticos con variantes de parametros.  
+**Comando:**
+```bash
+mvn -Dtest=MyStaticDemoTest test
+```
+**Imagen:** `docs/capturas/23-my-static-demo-test.png`
 
-1. **`docs/capturas/01-mvn-test-ok.png`**  
-   Comando:
-   ```bash
-   mvn test
-   ```
+### 24
+**Tema:** Exercise 16.1 - Bigger static mock example  
+**Descripcion:** Revisar escenarios amplios de mock estatico y verificacion.  
+**Comando:**
+```bash
+mvn -Dtest=StaticMockTest test
+```
+**Imagen:** `docs/capturas/24-static-mock-test.png`
 
-2. **`docs/capturas/02-state-vs-behavior-test.png`**  
-   Comando:
-   ```bash
-   mvn -Dtest=StateVsBehaviorTest test
-   ```
-
-3. **`docs/capturas/03-user-service-test.png`**  
-   Comando:
-   ```bash
-   mvn -Dtest=UserServiceTest test
-   ```
-
-4. **`docs/capturas/04-payment-service-test.png`**  
-   Comando:
-   ```bash
-   mvn -Dtest=PaymentServiceTest test
-   ```
-
-5. **`docs/capturas/05-user-service-common-use-cases-test.png`**  
-   Comando:
-   ```bash
-   mvn -Dtest=UserServiceCommonUseCasesTest test
-   ```
-
-6. **`docs/capturas/06-user-service-configuration-test.png`**  
-   Comando:
-   ```bash
-   mvn -Dtest=UserServiceConfigurationTest test
-   ```
-
-7. **`docs/capturas/07-user-service-advanced-mocking-test.png`**  
-   Comando:
-   ```bash
-   mvn -Dtest=UserServiceAdvancedMockingTest test
-   ```
-
-8. **`docs/capturas/08-user-service-exception-test.png`**  
-   Comando:
-   ```bash
-   mvn -Dtest=UserServiceExceptionTest test
-   ```
-
-9. **`docs/capturas/09-user-service-spy-test.png`**  
-   Comando:
-   ```bash
-   mvn -Dtest=UserServiceSpyTest test
-   ```
-
-10. **`docs/capturas/10-user-service-exception-handling-test.png`**  
-    Comando:
-    ```bash
-    mvn -Dtest=UserServiceExceptionHandlingTest test
-    ```
-
-11. **`docs/capturas/11-mockito-spy-test.png`**  
-    Comando:
-    ```bash
-    mvn -Dtest=MockitoSpyTest test
-    ```
-
-12. **`docs/capturas/12-user-service-verification-test.png`**  
-    Comando:
-    ```bash
-    mvn -Dtest=UserServiceVerificationTest test
-    ```
-
-13. **`docs/capturas/13-article-manager-inject-mocks-test.png`**  
-    Comando:
-    ```bash
-    mvn -Dtest=ArticleManagerInjectMocksTest test
-    ```
-
-14. **`docs/capturas/14-mockito-argument-capture-test.png`**  
-    Comando:
-    ```bash
-    mvn -Dtest=MockitoArgumentCaptureTest test
-    ```
-
-15. **`docs/capturas/15-mockito-answers-test.png`**  
-    Comando:
-    ```bash
-    mvn -Dtest=MockitoAnswersTest test
-    ```
-
-16. **`docs/capturas/16-mockito-mock-final-test.png`**  
-    Comando:
-    ```bash
-    mvn -Dtest=MockitoMockFinalTest test
-    ```
-
-17. **`docs/capturas/17-my-utils-test.png`**  
-    Comando:
-    ```bash
-    mvn -Dtest=MyUtilsTest test
-    ```
-
-18. **`docs/capturas/18-strict-stubs-test.png`**  
-    Comando:
-    ```bash
-    mvn -Dtest=StrictStubsTest test
-    ```
-
-19. **`docs/capturas/19-volume-util-tests.png`**  
-    Comando:
-    ```bash
-    mvn -Dtest=VolumeUtilTests test
-    ```
-
-20. **`docs/capturas/20-configure-threading-util-tests.png`**  
-    Comando:
-    ```bash
-    mvn -Dtest=ConfigureThreadingUtilTests test
-    ```
-
-21. **`docs/capturas/21-testing-spy.png`**  
-    Comando:
-    ```bash
-    mvn -Dtest=TestingSpy test
-    ```
-
-22. **`docs/capturas/22-article-manager-test.png`**  
-    Comando:
-    ```bash
-    mvn -Dtest=ArticleManagerTest test
-    ```
-
-23. **`docs/capturas/23-my-static-demo-test.png`**  
-    Comando:
-    ```bash
-    mvn -Dtest=MyStaticDemoTest test
-    ```
-
-24. **`docs/capturas/24-static-mock-test.png`**  
-    Comando:
-    ```bash
-    mvn -Dtest=StaticMockTest test
-    ```
-
-25. **`docs/capturas/25-private-field-method-test.png`**  
-    Comando:
-    ```bash
-    mvn -Dtest=MyClassWithPrivateFieldAndMethodTest test
-    ```
+### 25
+**Tema:** Exercise 17 - Spy + reflection + private members  
+**Descripcion:** Cambiar campo privado e invocar metodo privado mediante reflection.  
+**Comando:**
+```bash
+mvn -Dtest=MyClassWithPrivateFieldAndMethodTest test
+```
+**Imagen:** `docs/capturas/25-private-field-method-test.png`
